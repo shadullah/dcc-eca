@@ -27,9 +27,9 @@ const Dashboard = () => {
   const handleOrder = async () => {
     try {
       await axios
-        .post("http://localhost:5000/bkash-checkout", {
+        .post("https://dcc-server.vercel.app/bkash-checkout", {
           amount: 1,
-          callbackURL: "http://localhost:5000/bkash-callback",
+          callbackURL: "https://dcc-server.vercel.app/bkash-callback",
           orderID: "01",
           reference: "01",
         })
@@ -49,46 +49,20 @@ const Dashboard = () => {
   return (
     <div>
       <h1 className="text-3xl text-center mt-12">Pay Now</h1>
-      <div className="w-24 h-2 bg-green-600 mx-auto"></div>
-      {loggedUser ? (
+      <div className="w-24 h-2 bg-green-600 mb-12 mx-auto"></div>
+      {info?.isPaid ? (
         <>
-          <p className="mx-6">
-            <button
-              className="px-3 py-2 bg-red-600 text-white font-bold rounded-lg"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
+          <p className="m-5">
+            <Link to={"/profile"}>
+              <button className="px-3 py-2 bg-green-600 text-white font-bold rounded-lg">
+                Profile
+              </button>
+            </Link>
           </p>
-          {info?.isPaid ? (
-            <>
-              <p className="m-5">
-                <Link to={"/profile"}>
-                  <button className="px-3 py-2 bg-green-600 text-white font-bold rounded-lg">
-                    Profile
-                  </button>
-                </Link>
-              </p>
-            </>
-          ) : (
-            <></>
-          )}
         </>
       ) : (
         <></>
       )}
-
-      {/* {datum.map((data) => (
-        <p key={data._id}>
-          {data.email}
-          {/* {data.image} */}
-      {/* <Link to={`/single-profile/${data._id}`}>
-            <button>Profile</button>
-          </Link>
-        </p>  */}
-      {/* //   ))} */}
-
-      {/* <p>TKT-2024#0{datum.length}</p> */}
       <div>
         <div>
           <div className="text-center">
@@ -126,6 +100,20 @@ const Dashboard = () => {
               value="Proceed to Pay"
             />
           </div>
+          {loggedUser ? (
+            <>
+              <p className="text-center">
+                <button
+                  className="px-3 py-2 bg-red-600 text-white font-bold rounded-lg"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </p>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

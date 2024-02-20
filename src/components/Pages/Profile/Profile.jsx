@@ -24,7 +24,7 @@ const Profile = () => {
   const [info, setInfo] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/userDetails?email=${user?.email}`)
+    fetch(`https://dcc-server.vercel.app/userDetails?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setInfo(data));
   }, [user]);
@@ -39,7 +39,7 @@ const Profile = () => {
             {user ? (
               <>
                 <div>
-                  <p className="mx-6">
+                  <p className="text-center my-6">
                     <button
                       className="px-3 py-2 bg-red-600 text-white font-bold rounded-lg"
                       onClick={handleLogout}

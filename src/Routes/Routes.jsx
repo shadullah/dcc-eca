@@ -22,12 +22,12 @@ export const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard></Dashboard>,
-        loader: () => fetch("http://localhost:5000/users/"),
+        loader: () => fetch("https://dcc-server.vercel.app/users/"),
       },
       {
         path: "profile",
         element: <Profile></Profile>,
-        loader: () => fetch("http://localhost:5000/users/"),
+        loader: () => fetch("https://dcc-server.vercel.app/users/"),
       },
     ],
   },

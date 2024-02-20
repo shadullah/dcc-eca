@@ -106,7 +106,7 @@ const MyRegister = () => {
                     isPaid: false,
                   };
                   console.log(user);
-                  fetch(`http://localhost:5000/users`, {
+                  fetch(`https://dcc-server.vercel.app/users`, {
                     method: "POST",
                     headers: {
                       "content-type": "application/json",

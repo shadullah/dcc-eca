@@ -45,7 +45,9 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        fetch(`http://localhost:5000/userDetails?email=${currentUser.email}`)
+        fetch(
+          `https://dcc-server.vercel.app/userDetails?email=${currentUser.email}`
+        )
           .then((res) => res.json())
           .then((data) => {
             setInfo(data);
